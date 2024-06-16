@@ -15,8 +15,15 @@
 
 #include <iostream>
 
-int main()
+int main(int argc, char *argv[])
 {
-    std::cout << "Hello World!" << std::endl;
-    return 0;
+    if (argc != 2)
+    {
+        std::cerr << "You need to precise the file! The correct usage is..." << std::endl;
+        std::cerr << "phpc <fileName.php>" << std::endl;
+        return EXIT_FAILURE;
+    }
+
+    std::cout << argv[1] << std::endl;
+    return EXIT_SUCCESS;
 }
