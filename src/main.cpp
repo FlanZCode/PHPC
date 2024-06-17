@@ -14,6 +14,8 @@
  */
 
 #include <iostream>
+#include <fstream>
+#include <sstream>
 
 int main(int argc, char *argv[])
 {
@@ -21,9 +23,17 @@ int main(int argc, char *argv[])
     {
         std::cerr << "You need to precise the file! The correct usage is..." << std::endl;
         std::cerr << "phpc <fileName.php>" << std::endl;
-        return EXIT_FAILURE;
+        return 1;
     }
 
-    std::cout << argv[1] << std::endl;
-    return EXIT_SUCCESS;
+    std::string contents;
+    {
+        std::stringstream contentsStreams;
+        std::fstream input(argv[1], std::ios::in);
+        contentsStreams << input.rdbuf();
+        contents = contentsStreams.str();
+    }
+
+    std::cout << contents << std::endl;
+    return 0;
 }
