@@ -11,10 +11,10 @@ set(EXEC PHPC)
 
 add_executable(${EXEC} ${SRC})
 
-foreach(VERSION release snapshot test beta alpha)
-    add_custom_target(${VERSION}
-        COMMAND ${CMAKE_CXX_COMPILER} ${CMAKE_CXX_FLAGS} -O${OPT_LEVEL} -o ${OUT}/${EXEC}_${VERSION}.exe ${SRC}
-        COMMAND ${CMAKE_CXX_COMPILER} ${CMAKE_CXX_FLAGS} -O${OPT_LEVEL} -o ${OUT}/${EXEC}_${VERSION}.sh ${SRC}
+foreach(DEVSTATE release snapshot test beta alpha)
+    add_custom_target(${DEVSTATE}
+        COMMAND ${CMAKE_CXX_COMPILER} ${CMAKE_CXX_FLAGS} -O${OPT_LEVEL} -o ${OUT}/${EXEC}-v1.0.0-${DEVSTATE}.exe ${SRC}
+        COMMAND ${CMAKE_CXX_COMPILER} ${CMAKE_CXX_FLAGS} -O${OPT_LEVEL} -o ${OUT}/${EXEC}-v1.0.0-${DEVSTATE}.sh ${SRC}
     )
 endforeach()
 
