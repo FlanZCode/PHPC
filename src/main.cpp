@@ -22,7 +22,16 @@ int main(int argc, char *argv[])
     if (argc != 2)
     {
         std::cerr << "You need to precise the file! The correct usage is..." << std::endl;
-        std::cerr << "phpc <fileName.php>" << std::endl;
+        std::cerr << "syn <fileName.syn>" << std::endl;
+        return 1;
+    }
+
+    std::string filename = argv[1];
+    std::string extension = filename.substr(filename.find_last_of(".") + 1);
+
+    if (extension != "syn")
+    {
+        std::cerr << "The file need to be a .syn !" << std::endl;
         return 1;
     }
 
