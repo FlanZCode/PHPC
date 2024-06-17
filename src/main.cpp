@@ -26,6 +26,15 @@ int main(int argc, char *argv[])
         return 1;
     }
 
+    std::string filename = argv[1];
+    std::string extension = filename.substr(filename.find_last_of(".") + 1);
+
+    if (extension != "php")
+    {
+        std::cerr << "Le fichier doit être un fichier .php !" << std::endl;
+        return 1;
+    }
+
     std::string contents;
     {
         std::stringstream contentsStreams;
