@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
     if (argc != 2)
     {
         std::cerr << "You need to precise the file! The correct usage is..." << std::endl;
-        std::cerr << "phpc <fileName.syn>" << std::endl;
+        std::cerr << "syn <fileName.syn>" << std::endl;
         return 1;
     }
 
