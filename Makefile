@@ -1,4 +1,5 @@
 CXX = g++
+CXXFLAGS = -Wall -Werror -c -std=c++23
 SRC = src/main.cpp
 OUT = ./build/
 EXEC = $(OUT)PHPC
@@ -10,7 +11,7 @@ all: build
 build:
 	$(CXX) -o $(EXEC) $(SRC)
 
-run:
+run-test:
 ifeq ($(OS),Windows_NT)
 	cd tests && $(EXEC).exe test.php && cd ../
 else
@@ -26,21 +27,21 @@ else
 endif
 
 release: 
-	$(CXX) -O3 -m32 -o $(EXEC)_x32 $(SRC)
-	$(CXX) -O3 -m64 -o $(EXEC)_x64 $(SRC)
+	$(CXX) $(CXXFLAGS) -O3 -m32 -o $(EXEC)_x32 $(SRC)
+	$(CXX) $(CXXFLAGS) -O3 -m64 -o $(EXEC)_x64 $(SRC)
 
 snapshot: 
-	$(CXX) -O2 -m32 -o $(EXEC)_snapshot_x32 $(SRC)
-	$(CXX) -O2 -m64 -o $(EXEC)_snapshot_x64 $(SRC)
+	$(CXX) $(CXXFLAGS) -O2 -m32 -o $(EXEC)_snapshot_x32 $(SRC)
+	$(CXX) $(CXXFLAGS) -O2 -m64 -o $(EXEC)_snapshot_x64 $(SRC)
 
 test: 
-	$(CXX) -O1 -m32 -o $(EXEC)_test_x32 $(SRC)
-	$(CXX) -O1 -m64 -o $(EXEC)_test_x64 $(SRC)
+	$(CXX) $(CXXFLAGS) -O1 -m32 -o $(EXEC)_test_x32 $(SRC)
+	$(CXX) $(CXXFLAGS) -O1 -m64 -o $(EXEC)_test_x64 $(SRC)
 
 beta: 
-	$(CXX) -O0 -m32 -o $(EXEC)_beta_x32 $(SRC)
-	$(CXX) -O0 -m64 -o $(EXEC)_beta_x64 $(SRC)
+	$(CXX) $(CXXFLAGS) -O0 -m32 -o $(EXEC)_beta_x32 $(SRC)
+	$(CXX) $(CXXFLAGS) -O0 -m64 -o $(EXEC)_beta_x64 $(SRC)
 
 alpha: 
-	$(CXX) -O0 -m32 -o $(EXEC)_alpha_x32 $(SRC)
-	$(CXX) -O0 -m64 -o $(EXEC)_alpha_x64 $(SRC)
+	$(CXX) $(CXXFLAGS) -O0 -m32 -o $(EXEC)_alpha_x32 $(SRC)
+	$(CXX) $(CXXFLAGS) -O0 -m64 -o $(EXEC)_alpha_x64 $(SRC)
